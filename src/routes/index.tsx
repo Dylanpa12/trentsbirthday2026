@@ -133,23 +133,42 @@ function Index() {
           </div>
         </section>
       ) : (
-        <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center animate-zoom-in">
-          <span className="mb-4 rounded-full border border-vice-pink/40 bg-vice-pink/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-vice-pink">
+        <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+          {/* Scanline overlay */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 animate-scan"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 3px)",
+            }}
+          />
+
+          <span
+            className="mb-4 rounded-full border border-vice-pink/40 bg-vice-pink/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-vice-pink animate-rockstar-rise"
+            style={{ animationDelay: "1.6s" }}
+          >
             Pre-Order Confirmed
           </span>
 
-          <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight text-transparent md:text-6xl bg-clip-text bg-vice-gradient drop-shadow-[0_0_30px_rgba(255,204,51,0.35)]">
+          <h2 className="font-display text-5xl font-black uppercase leading-none tracking-tight text-transparent md:text-7xl bg-clip-text bg-vice-gradient animate-rockstar-zoom drop-shadow-[0_0_40px_rgba(255,204,51,0.45)]">
             The Future of GTA
             <br />
             Starts Here
           </h2>
 
-          <p className="mt-6 max-w-lg text-white/80 md:text-lg">
+          <p
+            className="mt-6 max-w-lg text-white/80 md:text-lg animate-rockstar-rise"
+            style={{ animationDelay: "1.9s" }}
+          >
             Your Ultimate Edition is secured, Trent. Sun-drenched beaches, neon
             nights, and a whole lot of trouble await. See you on launch day.
           </p>
 
-          <div className="mt-10 grid grid-cols-4 gap-3 md:gap-6">
+          <div
+            className="mt-10 grid grid-cols-4 gap-3 md:gap-6 animate-rockstar-rise"
+            style={{ animationDelay: "2.2s" }}
+          >
             {[
               { l: "Days", v: countdown.d },
               { l: "Hours", v: countdown.h },
@@ -174,7 +193,8 @@ function Index() {
             href="https://www.rockstargames.com/VI"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-block rounded-full bg-vice-gradient px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_35px_rgba(255,79,216,0.55)] transition-transform hover:scale-105"
+            style={{ animationDelay: "2.5s" }}
+            className="mt-10 inline-block rounded-full bg-vice-gradient px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_35px_rgba(255,79,216,0.55)] transition-transform hover:scale-105 animate-rockstar-rise"
           >
             Next Stop → Vice City
           </a>

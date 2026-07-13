@@ -36,7 +36,25 @@ function Index() {
   const [progress, setProgress] = useState(0);
   const [logIndex, setLogIndex] = useState(0);
   const [phase, setPhase] = useState<"install" | "done">("install");
+  const [money, setMoney] = useState(160);
   const [countdown, setCountdown] = useState({ d: 0, h: 0, m: 0, s: 0 });
+
+  useEffect(() => {
+    if (phase !== "done") return;
+    const start = performance.now();
+    const duration = 4000;
+    let raf = 0;
+    const step = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      // ease-out
+      const eased = 1 - Math.pow(1 - p, 2);
+      setMoney(Math.max(0, 160 - 160 * eased));
+      if (p < 1) raf = requestAnimationFrame(step);
+      else setMoney(0);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "install") return;

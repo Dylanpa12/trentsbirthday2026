@@ -62,8 +62,8 @@ function Index() {
   }, [phase]);
 
   useEffect(() => {
-    // Fake launch date: May 26, 2026
-    const target = new Date("2026-05-26T00:00:00Z").getTime();
+    // Launch date: November 19, 2026
+    const target = new Date("2026-11-19T00:00:00Z").getTime();
     const tick = () => {
       const diff = Math.max(0, target - Date.now());
       const d = Math.floor(diff / 86400000);
@@ -170,16 +170,14 @@ function Index() {
             ))}
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              setProgress(0);
-              setPhase("install");
-            }}
-            className="mt-10 rounded-full bg-vice-gradient px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_35px_rgba(255,79,216,0.55)] transition-transform hover:scale-105"
+          <a
+            href="https://www.rockstargames.com/VI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-block rounded-full bg-vice-gradient px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-black shadow-[0_0_35px_rgba(255,79,216,0.55)] transition-transform hover:scale-105"
           >
             Next Stop → Vice City
-          </button>
+          </a>
 
           <p className="mt-8 text-xs uppercase tracking-[0.3em] text-white/40">
             Rockstar Games · Ultimate Edition · 2026

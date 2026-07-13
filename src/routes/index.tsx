@@ -243,7 +243,7 @@ function Index() {
           >
             Welcome to Vice City, Trent.
             <br />
-            The countdown starts now.
+            See you on launch day.
           </p>
 
           <div

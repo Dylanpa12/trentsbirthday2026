@@ -165,11 +165,12 @@ function Index() {
           {/* GTA HUD money counter */}
           <div className="pointer-events-none absolute right-4 top-[11vh] z-20 flex items-baseline gap-1 md:right-8 md:top-[12vh]">
             <span
-              className="text-money drop-shadow-[2px_2px_0_rgba(0,0,0,0.9)]"
+              className="text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.9)]"
               style={{
                 fontFamily: "var(--font-money)",
                 fontSize: "clamp(2rem, 6vw, 3.75rem)",
                 lineHeight: 1,
+                letterSpacing: "0.02em",
                 WebkitTextStroke: "1px rgba(0,0,0,0.85)",
               }}
             >
@@ -191,11 +192,12 @@ function Index() {
           </h2>
 
           <p
-            className="mt-6 max-w-lg text-white/80 md:text-lg animate-rockstar-rise"
+            className="mt-6 max-w-lg text-lg text-white/80 md:text-xl animate-rockstar-rise"
             style={{ animationDelay: "1.9s" }}
           >
-            Your Ultimate Edition is secured, Trent. Sun-drenched beaches, neon
-            nights, and a whole lot of trouble await. See you on launch day.
+            Welcome to Vice City, Trent.
+            <br />
+            The countdown starts now.
           </p>
 
           <div

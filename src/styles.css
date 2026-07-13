@@ -4,6 +4,40 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Bebas Neue", "Impact", sans-serif;
+  --color-vice-pink: #ff4fd8;
+  --color-vice-gold: #ffcc33;
+  --color-noir: #05050a;
+}
+
+@utility bg-vice {
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(255, 79, 216, 0.55) 0%, transparent 45%),
+    radial-gradient(circle at 75% 65%, rgba(255, 204, 51, 0.45) 0%, transparent 50%),
+    linear-gradient(180deg, #12001a 0%, #05050a 100%);
+}
+
+@utility bg-vice-gradient {
+  background-image: linear-gradient(90deg, #ff4fd8, #ffcc33);
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes zoom-in {
+  0% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@utility animate-zoom-in {
+  animation: zoom-in 1.4s ease-out both;
+}
+
 /*
  * Design system definition.
  *

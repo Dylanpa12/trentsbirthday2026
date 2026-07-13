@@ -39,6 +39,33 @@ function Index() {
   const [phase, setPhase] = useState<"install" | "done">("install");
   const [money, setMoney] = useState(160);
   const [countdown, setCountdown] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const [muted, setMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (phase !== "done") return;
+    const a = audioRef.current;
+    if (!a) return;
+    a.volume = 0.7;
+    a.currentTime = 0;
+    const tryPlay = async () => {
+      try {
+        await a.play();
+      } catch {
+        setMuted(true);
+        a.muted = true;
+        try {
+          await a.play();
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+    tryPlay();
+    return () => {
+      a.pause();
+    };
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "done") return;

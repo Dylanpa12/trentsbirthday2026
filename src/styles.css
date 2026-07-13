@@ -38,6 +38,50 @@
   animation: zoom-in 1.4s ease-out both;
 }
 
+/* Rockstar-style dramatic slow zoom */
+@keyframes rockstar-zoom {
+  0%   { transform: scale(2.4); opacity: 0; filter: blur(18px); letter-spacing: 0.4em; }
+  40%  { opacity: 1; filter: blur(2px); }
+  100% { transform: scale(1); opacity: 1; filter: blur(0); letter-spacing: 0; }
+}
+@utility animate-rockstar-zoom {
+  animation: rockstar-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rockstar-rise {
+  0%   { transform: translateY(40px) scale(1.05); opacity: 0; filter: blur(8px); }
+  100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+}
+@utility animate-rockstar-rise {
+  animation: rockstar-rise 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes bars-in {
+  0%   { transform: scaleY(2); }
+  100% { transform: scaleY(1); }
+}
+@utility animate-bars-in {
+  animation: bars-in 1.4s cubic-bezier(0.7, 0, 0.2, 1) both;
+  transform-origin: center;
+}
+
+@keyframes shine-sweep {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@utility animate-shine {
+  background-size: 200% 100%;
+  animation: shine-sweep 4s linear infinite;
+}
+
+@keyframes scan-flicker {
+  0%, 100% { opacity: 0.06; }
+  50%      { opacity: 0.12; }
+}
+@utility animate-scan {
+  animation: scan-flicker 3s ease-in-out infinite;
+}
+
 /*
  * Design system definition.
  *

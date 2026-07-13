@@ -162,6 +162,21 @@ function Index() {
             }}
           />
 
+          {/* GTA HUD money counter */}
+          <div className="pointer-events-none absolute right-4 top-[11vh] z-20 flex items-baseline gap-1 md:right-8 md:top-[12vh]">
+            <span
+              className="text-money drop-shadow-[2px_2px_0_rgba(0,0,0,0.9)]"
+              style={{
+                fontFamily: "var(--font-money)",
+                fontSize: "clamp(2rem, 6vw, 3.75rem)",
+                lineHeight: 1,
+                WebkitTextStroke: "1px rgba(0,0,0,0.85)",
+              }}
+            >
+              ${money.toFixed(2)}
+            </span>
+          </div>
+
           <span
             className="mb-4 rounded-full border border-vice-pink/40 bg-vice-pink/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-vice-pink animate-rockstar-rise"
             style={{ animationDelay: "1.6s" }}

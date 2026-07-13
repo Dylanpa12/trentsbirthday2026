@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import songAsset from "@/assets/song.mp3.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,6 +39,33 @@ function Index() {
   const [phase, setPhase] = useState<"install" | "done">("install");
   const [money, setMoney] = useState(160);
   const [countdown, setCountdown] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const [muted, setMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (phase !== "done") return;
+    const a = audioRef.current;
+    if (!a) return;
+    a.volume = 0.7;
+    a.currentTime = 0;
+    const tryPlay = async () => {
+      try {
+        await a.play();
+      } catch {
+        setMuted(true);
+        a.muted = true;
+        try {
+          await a.play();
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+    tryPlay();
+    return () => {
+      a.pause();
+    };
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "done") return;
@@ -152,6 +180,24 @@ function Index() {
         </section>
       ) : (
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+          <audio ref={audioRef} src={songAsset.url} loop preload="auto" />
+
+          <button
+            type="button"
+            onClick={() => {
+              const a = audioRef.current;
+              if (!a) return;
+              const next = !muted;
+              a.muted = next;
+              setMuted(next);
+              if (!next && a.paused) a.play().catch(() => {});
+            }}
+            aria-label={muted ? "Unmute soundtrack" : "Mute soundtrack"}
+            className="absolute left-4 top-[11vh] z-20 rounded-full border border-white/20 bg-black/50 px-3 py-2 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm transition hover:bg-black/70 md:left-8 md:top-[12vh]"
+          >
+            {muted ? "♪ Tap for sound" : "♪ On"}
+          </button>
+
           {/* Scanline overlay */}
           <div
             aria-hidden

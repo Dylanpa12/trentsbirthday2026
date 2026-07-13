@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import songAsset from "@/assets/song.mp3.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -180,6 +180,24 @@ function Index() {
         </section>
       ) : (
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+          <audio ref={audioRef} src={songAsset.url} loop preload="auto" />
+
+          <button
+            type="button"
+            onClick={() => {
+              const a = audioRef.current;
+              if (!a) return;
+              const next = !muted;
+              a.muted = next;
+              setMuted(next);
+              if (!next && a.paused) a.play().catch(() => {});
+            }}
+            aria-label={muted ? "Unmute soundtrack" : "Mute soundtrack"}
+            className="absolute left-4 top-[11vh] z-20 rounded-full border border-white/20 bg-black/50 px-3 py-2 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm transition hover:bg-black/70 md:left-8 md:top-[12vh]"
+          >
+            {muted ? "♪ Tap for sound" : "♪ On"}
+          </button>
+
           {/* Scanline overlay */}
           <div
             aria-hidden

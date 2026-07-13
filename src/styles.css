@@ -6,8 +6,10 @@
 
 @theme {
   --font-display: "Bebas Neue", "Impact", sans-serif;
+  --font-money: "Pricedown", "Bebas Neue", "Impact", sans-serif;
   --color-vice-pink: #ff4fd8;
   --color-vice-gold: #ffcc33;
+  --color-money: #85bb65;
   --color-noir: #05050a;
 }
 

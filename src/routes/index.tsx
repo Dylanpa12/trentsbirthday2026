@@ -36,7 +36,25 @@ function Index() {
   const [progress, setProgress] = useState(0);
   const [logIndex, setLogIndex] = useState(0);
   const [phase, setPhase] = useState<"install" | "done">("install");
+  const [money, setMoney] = useState(160);
   const [countdown, setCountdown] = useState({ d: 0, h: 0, m: 0, s: 0 });
+
+  useEffect(() => {
+    if (phase !== "done") return;
+    const start = performance.now();
+    const duration = 4000;
+    let raf = 0;
+    const step = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      // ease-out
+      const eased = 1 - Math.pow(1 - p, 2);
+      setMoney(Math.max(0, 160 - 160 * eased));
+      if (p < 1) raf = requestAnimationFrame(step);
+      else setMoney(0);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "install") return;
@@ -143,6 +161,21 @@ function Index() {
                 "repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 3px)",
             }}
           />
+
+          {/* GTA HUD money counter */}
+          <div className="pointer-events-none absolute right-4 top-[11vh] z-20 flex items-baseline gap-1 md:right-8 md:top-[12vh]">
+            <span
+              className="text-money drop-shadow-[2px_2px_0_rgba(0,0,0,0.9)]"
+              style={{
+                fontFamily: "var(--font-money)",
+                fontSize: "clamp(2rem, 6vw, 3.75rem)",
+                lineHeight: 1,
+                WebkitTextStroke: "1px rgba(0,0,0,0.85)",
+              }}
+            >
+              ${money.toFixed(2)}
+            </span>
+          </div>
 
           <span
             className="mb-4 rounded-full border border-vice-pink/40 bg-vice-pink/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-vice-pink animate-rockstar-rise"

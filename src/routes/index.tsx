@@ -70,7 +70,7 @@ function Index() {
   useEffect(() => {
     if (phase !== "done") return;
     const start = performance.now();
-    const duration = 4000;
+    const duration = 8000;
     let raf = 0;
     const step = (t: number) => {
       const p = Math.min(1, (t - start) / duration);

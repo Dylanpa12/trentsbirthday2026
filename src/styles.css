@@ -84,6 +84,21 @@
   animation: scan-flicker 3s ease-in-out infinite;
 }
 
+@keyframes logo-flash {
+  0%   { opacity: 0; transform: scale(0.7); filter: blur(20px); }
+  8%   { opacity: 1; transform: scale(1.05); filter: blur(0); }
+  14%  { opacity: 0.1; }
+  20%  { opacity: 1; }
+  26%  { opacity: 0.2; }
+  32%  { opacity: 1; }
+  70%  { opacity: 1; transform: scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: scale(1.15); filter: blur(6px); }
+}
+@utility animate-logo-flash {
+  animation: logo-flash 2.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
 /*
  * Design system definition.
  *

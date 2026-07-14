@@ -136,17 +136,35 @@ function Index() {
 
       {phase === "install" ? (
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center animate-zoom-in">
-          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-vice-pink">
-            🎉 Happy Birthday, Trent
+          <p
+            className="mb-6 text-transparent bg-clip-text bg-vice-gradient drop-shadow-[0_0_25px_rgba(255,79,216,0.35)]"
+            style={{
+              fontFamily: "var(--font-money)",
+              fontSize: "clamp(3rem, 9vw, 6rem)",
+              lineHeight: 1,
+              letterSpacing: "0.04em",
+            }}
+          >
+            Happy Birthday, Trent
           </p>
-          <h1 className="font-display text-5xl font-black uppercase tracking-tight text-transparent md:text-7xl bg-clip-text bg-vice-gradient drop-shadow-[0_0_30px_rgba(255,79,216,0.35)]">
+          <h1
+            className="font-black uppercase tracking-tight text-transparent bg-clip-text bg-vice-gradient drop-shadow-[0_0_30px_rgba(255,79,216,0.35)]"
+            style={{
+              fontFamily: "var(--font-money)",
+              fontSize: "clamp(5rem, 16vw, 10rem)",
+              lineHeight: 0.9,
+            }}
+          >
             GTA VI
           </h1>
-          <p className="mt-2 text-sm uppercase tracking-[0.35em] text-vice-gold md:text-base">
+          <p
+            className="mt-3 uppercase tracking-[0.35em] text-vice-gold"
+            style={{ fontSize: "clamp(1rem, 2.2vw, 1.5rem)" }}
+          >
             Ultimate Edition
           </p>
 
-          <p className="mt-8 text-lg text-white/80 md:text-xl">
+          <p className="mt-10 text-xl text-white/80 md:text-2xl">
             Installing GTA 6 Ultimate Edition
           </p>
 

@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import songAsset from "@/assets/song.mp3.asset.json";
+import trailerAsset from "@/assets/trailer.mp4.asset.json";
+import rockstarLogo from "@/assets/rockstar-logo.png.asset.json";
 
-// ⇩⇩⇩ Paste the direct URL of the GTA VI trailer clip you want scroll-scrubbed here.
-// Any MP4/WebM URL (or a Lovable Asset URL) works. Leave blank to hide the section.
-const SCROLL_VIDEO_URL = "";
+const SCROLL_VIDEO_URL = trailerAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import songAsset from "@/assets/song.mp3.asset.json";
+import trailerAsset from "@/assets/trailer.mp4.asset.json";
+import rockstarLogo from "@/assets/rockstar-logo.png.asset.json";
 
-// ⇩⇩⇩ Paste the direct URL of the GTA VI trailer clip you want scroll-scrubbed here.
-// Any MP4/WebM URL (or a Lovable Asset URL) works. Leave blank to hide the section.
-const SCROLL_VIDEO_URL = "";
+const SCROLL_VIDEO_URL = trailerAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -182,24 +182,11 @@ function Index() {
       {phase === "logo" && (
         <section className="relative z-10 flex min-h-screen items-center justify-center bg-black">
           <div className="animate-logo-flash text-center">
-            <div
-              className="text-white"
-              style={{
-                fontFamily: moneyFont,
-                fontSize: "clamp(6rem, 22vw, 16rem)",
-                lineHeight: 0.85,
-                letterSpacing: "0.02em",
-                textShadow: "0 0 40px rgba(255,255,255,0.35)",
-              }}
-            >
-              R<span className="text-vice-gold">★</span>
-            </div>
-            <div
-              className="mt-2 uppercase tracking-[0.6em] text-white/80"
-              style={{ fontFamily: moneyFont, fontSize: "clamp(1rem, 2.4vw, 1.6rem)" }}
-            >
-              Rockstar Games
-            </div>
+            <img
+              src={rockstarLogo.url}
+              alt="Rockstar Games"
+              className="mx-auto h-auto w-[clamp(220px,40vw,520px)] drop-shadow-[0_0_50px_rgba(255,79,216,0.45)]"
+            />
           </div>
         </section>
       )}

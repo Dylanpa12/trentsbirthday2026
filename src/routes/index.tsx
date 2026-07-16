@@ -60,25 +60,47 @@ function Index() {
     const a = audioRef.current;
     if (!a) return;
     a.volume = 0.7;
+    a.muted = false;
     a.currentTime = 0;
+    setMuted(false);
+
+    let unlockAttached = false;
+    const unlock = async () => {
+      try {
+        a.muted = false;
+        await a.play();
+        setMuted(false);
+        removeUnlock();
+      } catch {
+        /* ignore */
+      }
+    };
+    const removeUnlock = () => {
+      if (!unlockAttached) return;
+      unlockAttached = false;
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+      window.removeEventListener("touchstart", unlock);
+    };
+
     const tryPlay = async () => {
       try {
         await a.play();
       } catch {
-        setMuted(true);
-        a.muted = true;
-        try {
-          await a.play();
-        } catch {
-          /* ignore */
-        }
+        // Autoplay blocked — keep UI as "Sound On" and start on first interaction
+        unlockAttached = true;
+        window.addEventListener("pointerdown", unlock, { once: true });
+        window.addEventListener("keydown", unlock, { once: true });
+        window.addEventListener("touchstart", unlock, { once: true });
       }
     };
     tryPlay();
     return () => {
+      removeUnlock();
       a.pause();
     };
   }, [phase]);
+
 
   useEffect(() => {
     if (phase !== "done") return;

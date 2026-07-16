@@ -295,7 +295,7 @@ function Index() {
               aria-label={muted ? "Unmute soundtrack" : "Mute soundtrack"}
               className="absolute left-4 top-[11vh] z-20 rounded-full border border-white/20 bg-black/50 px-3 py-2 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm transition hover:bg-black/70 md:left-8 md:top-[12vh]"
             >
-              {muted ? "♪ Tap for sound" : "♪ On"}
+              {muted ? "♪ Sound Off" : "♪ Sound On"}
             </button>
 
             <div
